@@ -1,6 +1,12 @@
-.navbar {
+/* .navbar {
     background-color: #333 !important;
     overflow: hidden;
+  } */
+
+  @media (min-width: 768px) {
+    .navbar-toggler {
+      display: none;
+    }
   }
 
   .navbar ul {
@@ -24,3 +30,66 @@
     background-color: #ddd;
     color: black;
   }
+
+.navbar {
+  background: var(--red-to-pink-to-purple-horizontal-gradient);
+  padding: 10px;
+  color: white;
+  border-radius: 10px 10px 10px 10px;
+}
+
+.navbar-brand {
+  color: white;
+  font-weight: bold;
+  font-size: 1.5em;
+}
+
+.navbar-nav .nav-link {
+  color: white;
+  padding: 10px 20px;
+  text-transform: uppercase;
+}
+
+.navbar-nav .nav-link:hover {
+  background-color: #FFC0CB;
+  border-radius: 5px;
+  transform: scale(1.05);
+}
+
+.navbar-toggler {
+  border-color: white;
+}
+
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='white' stroke-width='2' linecap='round' linejoin='round' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+
+.github-icon {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+}
+
+.github-icon svg {
+  fill: white;
+  transition: transform 0.2s ease, fill 0.2s ease;
+}
+
+.github-icon svg:hover {
+  transform: scale(1.1);
+  fill: #FFC0CB;
+}
+
+.github-icon a {
+  display: inline-block;
+  padding: 0;
+  border: none;
+  background-color: transparent;
+  transition: transform 0.2s ease, fill 0.2s ease;
+}
+
+.github-icon a:hover {
+  background-color: transparent;
+  box-shadow: none;
+  outline: none;
+}

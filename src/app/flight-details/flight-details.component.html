@@ -1,70 +1,77 @@
-<form #flightForm="ngForm" (ngSubmit)="onSubmit(flightForm)" (ngModelChange)="onFormChange()">
-    <div>
-
+<div class="page-container">
+  <form #flightForm="ngForm" (ngSubmit)="onSubmit(flightForm)" class="flight-form">
+    <div class="form-group">
+      <h2>Flight Details</h2>
       <label for="airline">Airline:</label>
-      <input type="text" name="airline" [(ngModel)]="formData.airline" required
-      [ngClass]="{'is-invalid': flightForm.controls['airline']?.invalid && flightForm.controls['airline']?.touched}">
-      <div *ngIf="flightForm.controls['airline']?.invalid && flightForm.controls['airline']?.touched" class="error-message">
+      <input type="text" name="airline" [(ngModel)]="formData.airline" #airlineCtrl="ngModel" required
+             [ngClass]="{'is-invalid': airlineCtrl.invalid && airlineCtrl.touched}">
+      <div *ngIf="airlineCtrl.invalid && airlineCtrl.touched" class="error-message">
         Airline is required
       </div>
     </div>
 
-    <div>
+    <div class="form-group">
       <label for="arrivalDate">Arrival Date:</label>
-      <input type="date" name="arrivalDate" [(ngModel)]="formData.arrivalDate" required
-      [ngClass]="{'is-invalid': flightForm.controls['arrivalDate']?.invalid && flightForm.controls['arrivalDate']?.touched}">
-      <div *ngIf="flightForm.controls['arrivalDate']?.invalid && flightForm.controls['arrivalDate']?.touched" class="error-message">
+      <input type="date" name="arrivalDate" [(ngModel)]="formData.arrivalDate" #arrivalDateCtrl="ngModel" required
+             [ngClass]="{'is-invalid': arrivalDateCtrl.invalid && arrivalDateCtrl.touched}">
+      <div *ngIf="arrivalDateCtrl.invalid && arrivalDateCtrl.touched" class="error-message">
         Arrival Date is required
       </div>
     </div>
 
-    <div>
+    <div class="form-group">
       <label for="arrivalTime">Arrival Time:</label>
-      <input type="time" name="arrivalTime" [(ngModel)]="formData.arrivalTime" required
-      [ngClass]="{'is-invalid': flightForm.controls['arrivalTime']?.invalid && flightForm.controls['arrivalTime']?.touched}">
-      <div *ngIf="flightForm.controls['arrivalTime']?.invalid && flightForm.controls['arrivalTime']?.touched" class="error-message">
+      <input type="time" name="arrivalTime" [(ngModel)]="formData.arrivalTime" #arrivalTimeCtrl="ngModel" required
+             [ngClass]="{'is-invalid': arrivalTimeCtrl.invalid && arrivalTimeCtrl.touched}">
+      <div *ngIf="arrivalTimeCtrl.invalid && arrivalTimeCtrl.touched" class="error-message">
         Arrival Time is required
       </div>
     </div>
 
-    <div>
+    <div class="form-group">
       <label for="flightNumber">Flight Number:</label>
-      <input type="text" name="flightNumber" [(ngModel)]="formData.flightNumber" required
-      [ngClass]="{'is-invalid': flightForm.controls['flightNumber']?.invalid && flightForm.controls['flightNumber']?.touched}">
-      <div *ngIf="flightForm.controls['flightNumber']?.invalid && flightForm.controls['flightNumber']?.touched" class="error-message">
+      <input type="text" name="flightNumber" [(ngModel)]="formData.flightNumber" #flightNumberCtrl="ngModel" required
+             [ngClass]="{'is-invalid': flightNumberCtrl.invalid && flightNumberCtrl.touched}">
+      <div *ngIf="flightNumberCtrl.invalid && flightNumberCtrl.touched" class="error-message">
         Flight Number is required
       </div>
     </div>
 
-    <div>
+    <div class="form-group">
       <label for="numOfGuests">Number of Guests:</label>
-      <input type="number" name="numOfGuests" [(ngModel)]="formData.numOfGuests" required
-      [ngClass]="{'is-invalid': flightForm.controls['numOfGuests']?.invalid && flightForm.controls['numOfGuests']?.touched}">
-      <div *ngIf="flightForm.controls['numOfGuests']?.invalid && flightForm.controls['numOfGuests']?.touched" class="error-message">
+      <input type="number" name="numOfGuests" [(ngModel)]="formData.numOfGuests" #numOfGuestsCtrl="ngModel" required
+             [ngClass]="{'is-invalid': numOfGuestsCtrl.invalid && numOfGuestsCtrl.touched}">
+      <div *ngIf="numOfGuestsCtrl.invalid && numOfGuestsCtrl.touched" class="error-message">
         Number of Guests is required
       </div>
     </div>
 
-    <div>
+    <div class="form-group">
       <label for="comments">Comments:</label>
-      <textarea name="comments" [(ngModel)]="formData.comments"></textarea>
+      <textarea name="comments" [(ngModel)]="formData.comments" #commentsCtrl="ngModel"></textarea>
     </div>
 
     <button type="submit" [disabled]="flightForm.invalid">{{ editingIndex !== null ? 'Update' : 'Submit' }}</button>
   </form>
 
+
+<div class="vertical-separator"></div>
+
+
   <p *ngIf="successMessage" class="popup">{{ successMessage }}</p>
 
-  <h2>List of Flights</h2>
-  <ul>
-    <li *ngFor="let submission of submissions; let i = index">
-        Airline: {{ submission.airline }} <br>
-        Arrival Date: {{ submission.arrivalDate }} <br>
-        Arrival Time: {{ submission.arrivalTime }} <br>
-        Flight Number: {{ submission.flightNumber }} <br>
-        Guests: {{ submission.numOfGuests }} <br>
-        Comments: {{ submission.comments || 'No comments'}} <br>
-        <button (click)="onEdit(i)">Edit</button>
-        <button (click)="onDelete(i)">Delete</button>
-    </li>
-  </ul>
+  <div class="flight-list">
+    <h2>List of Flights</h2>
+    <ul>
+      <li *ngFor="let submission of submissions; let i = index">
+        <span class="label">Airline:</span> <span class="value">{{ submission.airline }}</span> <br>
+        <span class="label">Arrival Date:</span> <span class="value">{{ submission.arrivalDate }}</span> <br>
+        <span class="label">Arrival Time:</span> <span class="value">{{ submission.arrivalTime }}</span> <br>
+        <span class="label">Flight Number:</span> <span class="value">{{ submission.flightNumber }}</span> <br>
+        <span class="label">Guests:</span> <span class="value">{{ submission.numOfGuests }}</span> <br>
+        <span class="label">Comments:</span> <span class="value">{{ submission.comments || '' }}</span> <br>
+        <button class="edit" (click)="onEdit(i)">Edit</button>
+        <button class="delete" (click)="onDelete(i)">Delete</button>
+      </li>
+    </ul>
+  </div>

@@ -37,3 +37,126 @@
     }
   }
 
+  :host {
+    --bright-blue: oklch(51.01% 0.274 263.83);
+    --electric-violet: oklch(53.18% 0.28 296.97);
+    --french-violet: oklch(47.66% 0.246 305.88);
+    --vivid-pink: oklch(69.02% 0.277 332.77);
+    --hot-red: oklch(61.42% 0.238 15.34);
+    --orange-red: oklch(63.32% 0.24 31.68);
+
+    --gray-900: oklch(19.37% 0.006 300.98);
+    --gray-700: oklch(36.98% 0.014 302.71);
+    --gray-400: oklch(70.9% 0.015 304.04);
+    --gray-200: oklch(91.5% 0.015 305.88);
+
+    --red-to-pink-to-purple-vertical-gradient: linear-gradient(
+      180deg,
+      var(--orange-red) 0%,
+      var(--vivid-pink) 50%,
+      var(--electric-violet) 100%
+    );
+
+    --red-to-pink-to-purple-horizontal-gradient: linear-gradient(
+      90deg,
+      var(--orange-red) 0%,
+      var(--vivid-pink) 50%,
+      var(--electric-violet) 100%
+    );
+  }
+
+  .page-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 20px;
+  }
+
+  .flight-form, .flight-list {
+    font-weight: bold;
+    flex: 1;
+    padding: 20px;
+    background-color: var(--gray-400);
+    color: white;
+    border-radius: 10px;
+  }
+
+  .flight-list ul {
+    list-style-type: none;
+    padding: 0;
+  }
+
+  .flight-list ul li {
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid white;
+  }
+
+  .flight-list ul li:last-child {
+    margin-bottom: 0;
+  }
+
+  .flight-list li span.label {
+    font-weight: bold;
+    margin-right: 5px;
+  }
+
+  .flight-list button {
+    margin-top: 10px;
+    margin-right: 10px;
+  }
+
+  .flight-list h2,
+  .flight-form h2 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 1.5em;
+    color: white;
+  }
+
+  .vertical-separator {
+    width: 5px;
+    height: auto;
+    background: var(--red-to-pink-to-purple-vertical-gradient);
+    margin: 0 20px;
+  }
+
+  .form-group {
+    margin-bottom: 15px;
+  }
+
+  .form-group input,
+  .form-group textarea {
+    width: 95%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--gray-200);
+    color: var(--gray-900);
+  }
+
+  button {
+    padding: 10px 20px;
+    background-color: #0c50fd;
+    border: none;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 10px;
+  }
+
+  .delete {
+    background-color: rgb(255, 38, 38);
+  }
+
+  button:hover {
+    background-color:  #FFC0CB;
+  }
+
+  .flight-list li span.label {
+    font-weight: bold;
+  }
+
+  .flight-list li .value {
+    font-weight: normal;
+  }
