@@ -3,13 +3,12 @@ import { AuthService } from '../auth/auth.service';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { NgForm } from '@angular/forms';
-
-
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-signup',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule, CommonModule],
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.css'],
 })
@@ -24,7 +23,8 @@ export class SignupComponent {
   }
 
 
-  signup() {
+  signup(signupForm: NgForm) {
+    console.log(signupForm.value);
     if (!this.email || !this.password) {
       this.errorMessage = 'Email or password is missing.';
       return;

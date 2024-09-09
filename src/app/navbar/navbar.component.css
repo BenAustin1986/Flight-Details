@@ -39,9 +39,14 @@
 }
 
 .navbar-brand {
-  color: white;
+  color: rgb(255, 255, 255);
   font-weight: bold;
   font-size: 1.5em;
+}
+
+.navbar .navbar-brand:hover {
+  background-color: #FFC0CB;
+  border-radius: 5px;
 }
 
 .navbar-nav .nav-link {

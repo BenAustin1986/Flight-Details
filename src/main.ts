@@ -4,7 +4,9 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { AppModule } from './app/app.module';
 import { initializeApp, getApps } from 'firebase/app';
 
-// Initialize Firebase if not already initialized
+// bootstrapApplication(AppComponent)
+//   .catch(err => console.error(err));
+
 if (!getApps().length) {
   initializeApp(environment.firebaseConfig);
 }
